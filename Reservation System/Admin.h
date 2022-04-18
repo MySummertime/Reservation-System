@@ -2,6 +2,7 @@
 #include "Identity.h"
 #include "Student.h"
 #include "Teacher.h"
+#include "ComputerRoom.h"
 #include "globalFile.h"
 #include <vector>
 #include <algorithm>
@@ -17,6 +18,7 @@ public:
 	string admin_pwd;
 	vector<Student> s_vec;
 	vector<Teacher> t_vec;
+	vector<ComputerRoom> c_vec;
 
 public:
 	Admin();
@@ -34,6 +36,8 @@ public:
 	void clearFile();
 
 	void initVector();
+
+	void initComputerRoom();
 
 	bool checkDuplicate(int id, int type);
 };

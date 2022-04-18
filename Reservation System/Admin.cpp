@@ -10,6 +10,7 @@ Admin::Admin(string _name, string _pwd) {
 	this->admin_pwd = _pwd;
 	//initialize vector
 	this->initVector();
+	this->initComputerRoom();
 }
 
 
@@ -125,7 +126,16 @@ void Admin::showAllAccounts() {
 }
 
 
-void Admin::showComputerRoom() {}
+void printComputerRoomInfo(ComputerRoom &r) {
+	cout << "Computer Room id: " << r.id << ", Computer Room quantity: " << r.qty 
+		<< endl;
+}
+
+void Admin::showComputerRoom() {
+	cout << "The info of Computerroom is as below:" << endl;
+	for_each(c_vec.begin(), c_vec.end(), printComputerRoomInfo);
+}
+
 
 void Admin::clearFile() {}
 
@@ -165,6 +175,19 @@ void Admin::initVector() {
 	}
 	cout << "The number of teachers is: " << t_vec.size() << endl;
 	ifs.close();
+}
+
+
+void Admin::initComputerRoom() {
+	ifstream ifs;
+	ifs.open(COMPUTERROOM_FILE, ios::in);
+
+	ComputerRoom croom;
+	while (ifs >> croom.id && ifs >> croom.qty) {
+		c_vec.push_back(croom);
+	}
+	ifs.close();
+	cout << "The number of Class Room is: " << c_vec.size() << endl;
 }
 
 

@@ -4,6 +4,7 @@
 #include "Teacher.h"
 #include "globalFile.h"
 #include <vector>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 

@@ -96,7 +96,34 @@ void Admin::createAccount() {
 }
 
 
-void Admin::showAllAccounts() {}
+void printStudentInfo(Student &s) {
+	cout << "Student id: " << s.student_id << ", Student name: " << s.student_name
+		<< ", Student password: " << s.student_pwd << endl;
+}
+
+void printTeacherInfo(Teacher &t) {
+	cout << "Teacher id: " << t.emp_id << ", Teacher name: " << t.emp_name <<
+		", Teacher password: " << t.emp_pwd << endl;
+}
+
+
+void Admin::showAllAccounts() {
+	cout << "Please choose the type of accounts you want to check~" << endl;
+	cout << "1. Student Accounts" << endl;
+	cout << "2. Teacher Accounts" << endl;
+	int select = 0;
+	cin >> select;
+	if (select == 1) {
+		cout << "There are all of the studentsaccounts info:" << endl;
+		for_each(s_vec.begin(), s_vec.end(), printStudentInfo);
+	}
+	else {
+		for_each(t_vec.begin(), t_vec.end(), printTeacherInfo);
+	}
+	system("pause");
+	system("cls");
+}
+
 
 void Admin::showComputerRoom() {}
 

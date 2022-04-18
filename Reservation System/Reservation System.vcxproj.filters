@@ -44,5 +44,8 @@
     <ClInclude Include="Teacher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ComputerRoom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

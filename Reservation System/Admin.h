@@ -33,7 +33,7 @@ public:
 
 	void showComputerRoom();
 
-	void clearFile();
+	void clearAppointments();
 
 	void initVector();
 

@@ -134,10 +134,29 @@ void printComputerRoomInfo(ComputerRoom &r) {
 void Admin::showComputerRoom() {
 	cout << "The info of Computerroom is as below:" << endl;
 	for_each(c_vec.begin(), c_vec.end(), printComputerRoomInfo);
+	system("pause");
+	system("cls");
 }
 
 
-void Admin::clearFile() {}
+void Admin::clearAppointments() {
+	cout << "Are you sure to clear all appointments?" << endl;
+	cout << "1. Sure" << endl << "2. Not exactly" << endl;
+
+	int select = 0;
+	cin >> select;
+	if (select == 1) {
+		ofstream ofs(APPOINTMENTS_FILE, ios::trunc);
+		ofs.close();
+	}
+	else {
+		return;
+	}
+
+	cout << "All appointments clear~" << endl;
+	system("pause");
+	system("cls");
+}
 
 
 /*

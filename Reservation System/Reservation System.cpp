@@ -27,23 +27,23 @@ void adminMenu(Identity* &administrator) {
         cin.get();
         //1. create an account
         if (select == 1) {
-            cout << "create an account" << endl;
+            //cout << "create an account" << endl;
             admin->createAccount();
         }
         //2. check account info
         else if (select == 2) {
-            cout << "show account info" << endl;
+            //cout << "show account info" << endl;
             admin->showAllAccounts();
         }
         //3. check computer room info
         else if (select == 3) {
-            cout << "show computer room info" << endl;
+            //cout << "show computer room info" << endl;
             admin->showComputerRoom();
         }
         //4. clear all appointments
         else if (select == 4) {
-            cout << "clear appointment files" << endl;
-            admin->clearFile();
+            //cout << "clear appointment files" << endl;
+            admin->clearAppointments();
         }
         //default: sign out
         else {

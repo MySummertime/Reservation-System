@@ -1,0 +1,2 @@
+Date: 3    Interval: 1    Student id: 0    Student name: Frances    Room id: 1    Status: 1
+Date: 2    Interval: 2    Student id: 0    Student name: Frances    Room id: 2    Status: 1

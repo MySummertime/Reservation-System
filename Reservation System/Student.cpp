@@ -1,14 +1,115 @@
 #include "Student.h"
+#include "globalFile.h"
+#include <fstream>
 
 
 Student::Student() {}
 
-Student::Student(int id, string name, string pwd) {}
 
-void Student::operMenu() {}
+Student::Student(int id, string name, string pwd) {
+	//initialize the attributes of student
+	this->student_id = id;
+	this->student_name = name;
+	this->student_pwd = pwd;
+
+	//initialize the attributes of computer room
+	ifstream ifs;
+	ifs.open(COMPUTERROOM_FILE, ios::in);
+
+	ComputerRoom croom;
+	//copy computer room info to vector
+	while (ifs >> croom.id && ifs >> croom.qty) {
+		c_vec.push_back(croom);
+	}
+
+	ifs.close();
+}
+
+
+void Student::operMenu() {
+	cout << "Welcome~" << endl;
+	cout << "Student " << this->student_name << " log in~" << endl;
+	cout << "\t\t*********************************************************\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t|              1. Initialize an appointment             |\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t|              2. Show my appointments                  |\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t|              3. Show all appointments                 |\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t|              4. Cancel an appointments                |\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t|              0. Sign out                              |\n";
+	cout << "\t\t|                                                       |\n";
+	cout << "\t\t*********************************************************\n";
+	cout << "Please choose your operation: ";
+}
+
 
 //init an appointment
-void Student::initAppointment() {}
+void Student::initAppointment() {
+	cout << "Available time for appointment: Mon --> Fri" << endl;
+	cout << "Please enter a date code (1 to 5): " << endl;
+	cout << "1. Mon" << endl;
+	cout << "2. Tue" << endl;
+	cout << "3. Mon" << endl;
+	cout << "4. Thu" << endl;
+	cout << "5. Fir" << endl;
+	int date = 0;
+	while (true) {
+		cin >> date;
+		cin.get();
+		if (date >= 1 && date <= 5) {
+			break;
+		}
+		cout << "Incorrect input, please enter again~" << endl;
+	}
+
+	cout << "Please enter an interval code (1 to 2): " << endl;
+	cout << "1. A.M." << endl;
+	cout << "2. P.M." << endl;
+	int interval = 0;
+	while (true) {
+		cin >> interval;
+		cin.get();
+		if (interval >= 1 && interval <= 2) {
+			break;
+		}
+		cout << "Incorrect input, please enter again~" << endl;
+	}
+
+	cout << "Please enter a computer room code (1 to " << c_vec.size() << "): " << endl;
+	for (int i = 0; i < c_vec.size(); ++i) {
+		cout << "The room with id " << c_vec[i].id << " has a capacity of "
+			<< c_vec[i].qty << "." << endl;
+	}
+	int room = 0;
+	while (true) {
+		cin >> room;
+		cin.get();
+		if (room >= 1 && room <= c_vec.size()) {
+			break;
+		}
+		cout << "Incorrect input, please enter again~" << endl;
+	}
+	
+	cout << "Appointment initialized successfully~" << endl
+		<< "Your appointment is under review now~" << endl;
+	
+	//append new appointment into Appointment.txt
+	ofstream ofs;
+	ofs.open(APPOINTMENTS_FILE, ios::app);
+	ofs << "Date: " << date << "    "
+		<< "Interval: " << interval << "    "
+		<< "Student id: " << this->student_id << "    "
+		<< "Student name: " << this->student_name << "    "
+		<< "Room id: " << room << "    "
+		<< "Status: " << 1 << endl;
+	ofs.close();
+	
+	system("pause");
+	system("cls");
+}
 
 //check out my appointments
 void Student::showMyAppointment() {}

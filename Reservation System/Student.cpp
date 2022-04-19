@@ -1,5 +1,4 @@
 #include "Student.h"
-#include "globalFile.h"
 #include <fstream>
 
 
@@ -99,12 +98,12 @@ void Student::initAppointment() {
 	//append new appointment into Appointment.txt
 	ofstream ofs;
 	ofs.open(APPOINTMENTS_FILE, ios::app);
-	ofs << "Date: " << date << "    "
-		<< "Interval: " << interval << "    "
-		<< "Student id: " << this->student_id << "    "
-		<< "Student name: " << this->student_name << "    "
-		<< "Room id: " << room << "    "
-		<< "Status: " << 1 << endl;
+	ofs << "Date:" << date << "    "
+		<< "Interval:" << interval << "    "
+		<< "StudentId:" << this->student_id << "    "
+		<< "StudentName:" << this->student_name << "    "
+		<< "RoomId:" << room << "    "
+		<< "Status:" << 1 << endl;
 	ofs.close();
 	
 	system("pause");
@@ -112,7 +111,9 @@ void Student::initAppointment() {
 }
 
 //check out my appointments
-void Student::showMyAppointment() {}
+void Student::showMyAppointment() {
+	Appointments apment;
+}
 
 //check all appointments
 void Student::showAllAppointments() {}

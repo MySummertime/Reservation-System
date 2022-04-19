@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Appointments.cpp" />
     <ClCompile Include="Reservation System.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="Appointments.h" />
     <ClInclude Include="ComputerRoom.h" />
     <ClInclude Include="globalFile.h" />
     <ClInclude Include="Identity.h" />

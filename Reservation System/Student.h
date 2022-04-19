@@ -1,5 +1,7 @@
 #pragma once
 #include "Identity.h"
+#include "globalFile.h"
+#include "Appointments.h"
 #include "ComputerRoom.h"
 #include <vector>
 #include <iostream>

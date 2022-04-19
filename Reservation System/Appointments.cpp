@@ -85,4 +85,20 @@ Appointments::Appointments() {
 	}
 }
 
-void Appointments::updateAppointment() {}
+void Appointments::updateAppointment() {
+	int qty = this->appointments_qty;
+
+	//no appointment exists
+	if (qty == 0) {
+		return;
+	}
+
+	//appointments exist
+	ofstream ofs(APPOINTMENTS_FILE, ios::out | ios::trunc);
+	for (int i = 0; i < qty; ++i) {
+		for (auto& j : this->apppointments_map[i]) {
+			ofs << j.first << ":" << j.second << endl;
+		}
+	}
+	ofs.close();
+}

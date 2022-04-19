@@ -1,5 +1,6 @@
 #include "Student.h"
 #include <fstream>
+#include <sstream>
 
 
 Student::Student() {}
@@ -112,11 +113,43 @@ void Student::initAppointment() {
 
 //check out my appointments
 void Student::showMyAppointment() {
-	Appointments apment;
+	Appointments am;
+	
+	int qty = am.appointments_qty;
+	if (!qty) {
+		cout << "No appointment recorded~" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
+	int id;
+	for (int i = 0; i < qty; ++i) {
+		stringstream ss(am.appointments_map[i]["StudentId"]);
+		ss >> id;
+		//Or use atoi(string.c_str()) to get id
+		if (id == this->student_id) {
+			cout << "Date: Day" << am.appointments_map[i]["Date"] << endl
+				<< "Interval: " << 
+				(am.appointments_map[i]["Interval"] == "1" ? "Morning" : "Afternoon") << endl
+				<< "RoomId: " << am.appointments_map[i]["RoomId"] << endl
+				<< "Status: " << 
+				(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
+				(am.appointments_map[i]["Status"] == "2" ? "Appointment Done~" :
+				(am.appointments_map[i]["Status"] == "3" ? "Appointment Failed~" : 
+				(am.appointments_map[i]["Status"] == "0" ? "Appointment Canceled~" :
+					"Unknown"))))
+				<< endl << endl;
+		}
+	}
+	system("pause");
+	system("cls");
 }
 
 //check all appointments
-void Student::showAllAppointments() {}
+void Student::showAllAppointments() {
+	Appointments am;
+}
 
 //cancel an appointment
 void Student::cancelOneAppointment() {}

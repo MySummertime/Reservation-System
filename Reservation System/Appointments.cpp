@@ -71,18 +71,20 @@ Appointments::Appointments() {
 			m.insert(make_pair(key, val));
 			//cout << key << ": " << val << endl;
 		}
-		this->apppointments_map.insert(make_pair(this->appointments_qty, m));
+		this->appointments_map.insert(make_pair(this->appointments_qty, m));
 		++this->appointments_qty;
 	}
 	ifs.close();
-	
-	for (auto &i : this->apppointments_map) {
+	/*
+	for (auto &i : this->appointments_map) {
 		cout << "No." << i.first << endl;
 		for (auto& j : i.second) {
-			cout << "key: " << j.first << ", value: " << j.second << endl;
+			cout << j.first << ": " << j.second << endl;
 		}
 		cout << endl;
 	}
+	*/
+	return;
 }
 
 void Appointments::updateAppointment() {
@@ -96,7 +98,7 @@ void Appointments::updateAppointment() {
 	//appointments exist
 	ofstream ofs(APPOINTMENTS_FILE, ios::out | ios::trunc);
 	for (int i = 0; i < qty; ++i) {
-		for (auto& j : this->apppointments_map[i]) {
+		for (auto& j : this->appointments_map[i]) {
 			ofs << j.first << ":" << j.second << endl;
 		}
 	}

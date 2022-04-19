@@ -10,7 +10,7 @@ using namespace std;
 class Appointments {
 public:
 	int appointments_qty;
-	unordered_map<int, unordered_map<string, string>> apppointments_map;
+	unordered_map<int, unordered_map<string, string>> appointments_map;
 	
 public:
 	Appointments();

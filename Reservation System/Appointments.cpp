@@ -75,17 +75,9 @@ Appointments::Appointments() {
 		++this->appointments_qty;
 	}
 	ifs.close();
-	/*
-	for (auto &i : this->appointments_map) {
-		cout << "No." << i.first << endl;
-		for (auto& j : i.second) {
-			cout << j.first << ": " << j.second << endl;
-		}
-		cout << endl;
-	}
-	*/
 	return;
 }
+
 
 void Appointments::updateAppointment() {
 	int qty = this->appointments_qty;
@@ -101,6 +93,7 @@ void Appointments::updateAppointment() {
 		for (auto& j : this->appointments_map[i]) {
 			ofs << j.first << ":" << j.second << endl;
 		}
+		ofs << endl;
 	}
 	ofs.close();
 }

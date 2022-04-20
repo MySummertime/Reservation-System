@@ -111,6 +111,7 @@ void Student::initAppointment() {
 	system("cls");
 }
 
+
 //check out my appointments
 void Student::showMyAppointment() {
 	Appointments am;
@@ -146,6 +147,7 @@ void Student::showMyAppointment() {
 	system("cls");
 }
 
+
 //check all appointments
 void Student::showAllAppointments() {
 	Appointments am;
@@ -178,6 +180,7 @@ void Student::showAllAppointments() {
 	return;
 }
 
+
 //cancel an appointment
 void Student::cancelOneAppointment() {
 	Appointments am;
@@ -194,18 +197,17 @@ void Student::cancelOneAppointment() {
 		<< "Only appointments under reviewing or already finished could be canceled," << endl
 		<< "Please enter the code of appointments as below~" << endl;
 
-	int idx = 1;	//indicate the code of appointments could be canceled
+	int idx = 0;	//indicate the code of appointments could be canceled
 	vector<int> vec;	//receive the code of appointments could be canceled
 
 	for (int i = 0; i < qty; ++i) {
-		auto record = am.appointments_map[i];
-		int id = atoi(record["StudentId"].c_str());
+		int id = atoi(am.appointments_map[i]["StudentId"].c_str());
 		if (id == this->student_id) {
-			int status = atoi(record["Status"].c_str());
+			int status = atoi(am.appointments_map[i]["Status"].c_str());
 			if (status == 1 || status == 2) {
-				vec.push_back(idx);
-				cout << "No. " << idx++ << endl
-				<< "Date: day " << record["Date"] << endl
+				vec.push_back(i);
+				cout << "No. " << ++idx << endl
+				<< "Date: day " << am.appointments_map[i]["Date"] << endl
 				<< "Interval: " << 
 					(am.appointments_map[i]["Interval"] == "1" ? "Morning" : 
 					"Afternoon") << endl
@@ -224,8 +226,7 @@ void Student::cancelOneAppointment() {
 	while (true) {
 		cin >> select;
 		cin.get();
-		
-		if (select >= 0 && select < vec.size()) {
+		if (select >= 0 && select <= vec.size()) {
 			if (!select) {
 				break;
 			}

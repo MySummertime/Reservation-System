@@ -179,4 +179,67 @@ void Student::showAllAppointments() {
 }
 
 //cancel an appointment
-void Student::cancelOneAppointment() {}
+void Student::cancelOneAppointment() {
+	Appointments am;
+
+	int qty = am.appointments_qty;
+	if (!qty) {
+		cout << "No appointment exists~" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
+	cout << endl
+		<< "Only appointments under reviewing or already finished could be canceled," << endl
+		<< "Please enter the code of appointments as below~" << endl;
+
+	int idx = 1;	//indicate the code of appointments could be canceled
+	vector<int> vec;	//receive the code of appointments could be canceled
+
+	for (int i = 0; i < qty; ++i) {
+		auto record = am.appointments_map[i];
+		int id = atoi(record["StudentId"].c_str());
+		if (id == this->student_id) {
+			int status = atoi(record["Status"].c_str());
+			if (status == 1 || status == 2) {
+				vec.push_back(idx);
+				cout << "No. " << idx++ << endl
+				<< "Date: day " << record["Date"] << endl
+				<< "Interval: " << 
+					(am.appointments_map[i]["Interval"] == "1" ? "Morning" : 
+					"Afternoon") << endl
+				<< "RoomId: " << am.appointments_map[i]["RoomId"] << endl
+				<< "Status: " <<
+					(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
+					"Appointment Done~") << endl << endl;
+			}
+		}
+	}
+
+	cout << "Please enter the code of appointment you want to cancel(0 for Exit): ";
+	
+	int select = 0;
+
+	while (true) {
+		cin >> select;
+		cin.get();
+		
+		if (select >= 0 && select < vec.size()) {
+			if (!select) {
+				break;
+			}
+			else {
+				am.appointments_map[vec[select - 1]]["Status"] = "0";
+				am.updateAppointment();
+				cout << "Appointment you chose canceled successfully~" << endl;
+				break;
+			}
+		}
+		cout << "Something wrong with your selection, please select again~" << endl;
+	}
+
+	system("pause");
+	system("cls");
+	return;
+}

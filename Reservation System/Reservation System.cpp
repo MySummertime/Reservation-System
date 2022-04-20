@@ -11,6 +11,42 @@ using namespace std;
 
 
 /*
+Interface of Teacher Menu
+*/
+void teacherMenu(Identity*& _teacher) {
+    while (true) {
+        //activate the student menu
+        _teacher->operMenu();
+
+        //convert the parent class pointer to children class pointer
+        Teacher* teacher = (Teacher*)_teacher;
+
+        //receive the specific operation that teacher chose
+        int select;
+        cin >> select;
+        cin.get();
+        //1. Show all appointments
+        if (select == 1) {
+            cout << "Show all appointments" << endl;
+            teacher->showAllAppointment();
+        }
+        //2. Review an appointment
+        else if (select == 2) {
+            cout << "Review an appointment" << endl;
+            teacher->reviewAppointments();
+        }
+        else {
+            delete teacher;
+            cout << "Successfully signed out~" << endl;
+            system("pause");
+            system("cls");
+            return;
+        }
+    }
+}
+
+
+/*
 Interface of Student Menu
 */
 void studentMenu(Identity* &_student) {
@@ -173,6 +209,9 @@ void loginIn(string file_name, int user_type) {
                 system("pause");
                 system("cls");
                 person = new Teacher(id, name, pwd);
+                //redirect to teacher menu
+                teacherMenu(person);
+                return;
             }
         }
     }

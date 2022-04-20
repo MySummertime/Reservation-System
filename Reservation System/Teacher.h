@@ -21,6 +21,6 @@ public:
 
 	void showAllAppointment();
 
-	void validAppointments();
+	void reviewAppointments();
 
 };

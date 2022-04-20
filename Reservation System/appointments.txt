@@ -3,21 +3,21 @@ Interval:1
 StudentId:0
 StudentName:Frances
 RoomId:1
-Status:1
+Status:0
 
 Date:2
 Interval:2
 StudentId:0
 StudentName:Frances
 RoomId:2
-Status:0
+Status:1
 
 Date:1
 Interval:1
 StudentId:1
 StudentName:Jack
 RoomId:3
-Status:0
+Status:1
 
 Date:5
 Interval:2
@@ -25,4 +25,11 @@ StudentId:1
 StudentName:Jack
 RoomId:3
 Status:1
+
+Date:5
+Interval:2
+StudentId:3
+StudentName:Jim
+RoomId:1
+Status:2
 

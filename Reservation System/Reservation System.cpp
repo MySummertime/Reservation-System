@@ -50,43 +50,45 @@ void teacherMenu(Identity*& _teacher) {
 Interface of Student Menu
 */
 void studentMenu(Identity* &_student) {
-    //activate the student menu
-    _student->operMenu();
+    while (true) {
+        //activate the student menu
+        _student->operMenu();
 
-    //convert the parent class pointer to children class pointer
-    Student* student = (Student*)_student;
-    
-    //receive the specific operation that student chose
-    int select;
-    cin >> select;
-    cin.get();
-    //1. Initialize an appointment
-    if (select == 1) {
-        cout << "Initialize an appointment" << endl;
-        student->initAppointment();
-    }
-    //2. Show my own appointments
-    else if (select == 2) {
-        cout << "Show my own appointments" << endl;
-        student->showMyAppointment();
-    }
-    //3. Show all appointments
-    else if (select == 3) {
-        cout << "Show all appointments" << endl;
-        student->showAllAppointments();
-    }
-    //4. Cancel an appointment
-    else if (select == 4) {
-        cout << "Cancel an appointment" << endl;
-        student->cancelOneAppointment();
-    }
-    //default: sign out
-    else {
-        delete student;
-        cout << "Successfully signed out~" << endl;
-        system("pause");
-        system("cls");
-        return;
+        //convert the parent class pointer to children class pointer
+        Student* student = (Student*)_student;
+
+        //receive the specific operation that student chose
+        int select;
+        cin >> select;
+        cin.get();
+        //1. Initialize an appointment
+        if (select == 1) {
+            cout << "Initialize an appointment" << endl;
+            student->initAppointment();
+        }
+        //2. Show my own appointments
+        else if (select == 2) {
+            cout << "Show my own appointments" << endl;
+            student->showMyAppointment();
+        }
+        //3. Show all appointments
+        else if (select == 3) {
+            cout << "Show all appointments" << endl;
+            student->showAllAppointments();
+        }
+        //4. Cancel an appointment
+        else if (select == 4) {
+            cout << "Cancel an appointment" << endl;
+            student->cancelOneAppointment();
+        }
+        //default: sign out
+        else {
+            delete student;
+            cout << "Successfully signed out~" << endl;
+            system("pause");
+            system("cls");
+            return;
+        }
     }
 }
 

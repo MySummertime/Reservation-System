@@ -136,9 +136,9 @@ void Student::showMyAppointment() {
 				<< "RoomId: " << am.appointments_map[i]["RoomId"] << endl
 				<< "Status: " << 
 				(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
-				(am.appointments_map[i]["Status"] == "2" ? "Appointment Done~" :
-				(am.appointments_map[i]["Status"] == "3" ? "Appointment Failed~" : 
-				(am.appointments_map[i]["Status"] == "0" ? "Appointment Canceled~" :
+				(am.appointments_map[i]["Status"] == "2" ? "Accepted~" :
+				(am.appointments_map[i]["Status"] == "3" ? "Rejected~" : 
+				(am.appointments_map[i]["Status"] == "0" ? "Canceled~" :
 					"Unknown"))))
 				<< endl << endl;
 		}
@@ -164,16 +164,16 @@ void Student::showAllAppointments() {
 		cout << "No. " << i + 1 << endl;
 		cout << "Date: Day" << am.appointments_map[i]["Date"] << endl
 			<< "Interval: " <<
-			(am.appointments_map[i]["Interval"] == "1" ? "Morning" : "Afternoon") << endl
+				(am.appointments_map[i]["Interval"] == "1" ? "Morning" : "Afternoon") << endl
 			<< "StudentId: " << am.appointments_map[i]["StudentId"] << endl
 			<< "StudentName: " << am.appointments_map[i]["StudentName"] << endl
 			<< "RoomId: " << am.appointments_map[i]["RoomId"] << endl
 			<< "Status: " <<
-			(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
-			(am.appointments_map[i]["Status"] == "2" ? "Appointment Done~" :
-			(am.appointments_map[i]["Status"] == "3" ? "Appointment Failed~" :
-			(am.appointments_map[i]["Status"] == "0" ? "Appointment Canceled~" :
-			"Unknown")))) << endl << endl;
+				(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
+				(am.appointments_map[i]["Status"] == "2" ? "Accepted~" :
+				(am.appointments_map[i]["Status"] == "3" ? "Rejected~" :
+				(am.appointments_map[i]["Status"] == "0" ? "Canceled~" :
+				"Unknown")))) << endl << endl;
 	}
 	system("pause");
 	system("cls");
@@ -214,7 +214,7 @@ void Student::cancelOneAppointment() {
 				<< "RoomId: " << am.appointments_map[i]["RoomId"] << endl
 				<< "Status: " <<
 					(am.appointments_map[i]["Status"] == "1" ? "Under Reviewing~" :
-					"Appointment Done~") << endl << endl;
+					"Accepted~") << endl << endl;
 			}
 		}
 	}
